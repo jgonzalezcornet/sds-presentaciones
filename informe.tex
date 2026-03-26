@@ -13,12 +13,17 @@
 \usepackage{fvextra}
 \usepackage[most]{tcolorbox}
 \usepackage{bm}
+\usepackage{caption}
 
 \geometry{margin=2.5cm}
 \onehalfspacing
 
 \setlist[itemize]{itemsep=0pt, topsep=6pt, parsep=0pt, partopsep=0pt}
 \setlist[enumerate]{itemsep=0pt, topsep=6pt, parsep=0pt, partopsep=0pt}
+\captionsetup{
+    justification=centering,
+    singlelinecheck=true
+}
 
 \begin{document}
 
@@ -294,34 +299,34 @@ Los resultados obtenidos a partir de las simulaciones se presentan y analizan a 
 
 \subsection{Evolución temporal del observable}
 
-En las Fig. 1, Fig. 2 y Fig. 3 se presentan las evoluciones temporales de la polarización ($v_a$) correspondientes a las tres condiciones experimentales detalladas previamente. En cada una de estas figuras se realiza una superposición de tres valores del parámetro de ruido ($\eta = 0.1$, $\eta = 1$ y $\eta = 3$), permitiendo un análisis comparativo directo del impacto del ruido en la dinámica del sistema para cada caso de estudio. Estas representaciones gráficas tienen como propósito fundamental justificar la selección de la ventana temporal de medición. Al observar la convergencia de las curvas, se establecen los criterios para identificar el inicio del estado estacionario, garantizando que el promedio del observable ($v_a$) se realice sobre un intervalo donde las fluctuaciones se han estabilizado y el transitorio inicial ha sido superado.
+En las Fig. 1, Fig. 2 y Fig. 3 expuestas a continuación se presentan las evoluciones temporales de la polarización ($v_a$) correspondientes a las tres condiciones experimentales detalladas previamente. En cada una de estas figuras se realiza una superposición de tres valores del parámetro de ruido ($\eta = 0.1$, $\eta = 1$ y $\eta = 3$), permitiendo un análisis comparativo directo del impacto del ruido en la dinámica del sistema para cada caso de estudio. Estas representaciones gráficas tienen como propósito fundamental justificar la selección de la ventana temporal de medición. Al observar la convergencia de las curvas, se establecen los criterios para identificar el inicio del estado estacionario, garantizando que el promedio del observable ($v_a$) se realice sobre un intervalo donde las fluctuaciones se han estabilizado y el transitorio inicial ha sido superado.
 
 Para determinar el instante de inicio del estado estacionario ($t_0$) en cada configuración, se estableció un criterio cuantitativo basado en la estabilidad de las fluctuaciones del observable ($v_a$). Se definió una banda de tolerancia específica para cada caso; el estado estacionario se considera alcanzado en el momento en que cinco mediciones consecutivas de la polarización presentan variaciones relativas inferiores a dicha tolerancia. En aquellos casos donde las fluctuaciones inherentes al sistema impiden que se cumpla esta condición antes de transcurrir el 40\% de la simulación, se adopta de manera conservadora este límite temporal ($t_0=0.4T$) como el inicio del régimen estacionario, garantizando así la exclusión del período transitorio inicial.
 
 % FIGURA 1
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig1}
-% \caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura1.png}
+\caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
+\end{figure}
 
 En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder. Aplicando el criterio descrito, las tolerancias determinadas empíricamente fueron de 0.001 para el caso de bajo ruido ($\eta=0.1$), 0.008 para un ruido intermedio ($\eta=1$) y 0.05 para la simulación con ruido elevado ($\eta=3$). Estos umbrales crecientes reflejan cómo la amplitud de las fluctuaciones naturales del enjambre se magnifica a medida que se incrementa el ruido del sistema.
 
 % FIGURA 2
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig2}
-% \caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con dirección fija.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura2.png}
+\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con dirección fija.}
+\end{figure}
 
 De manera análoga, la Fig. 2 exhibe el comportamiento temporal para el escenario que incorpora un líder con dirección fija. Para esta configuración, las tolerancias requeridas para identificar el estado estacionario fueron de 0.001, 0.002 y 0.03 para los niveles de ruido $\eta=0.1$, $\eta=1$ y $\eta=3$, respectivamente. Se puede notar que, ante ruidos moderados e intensos, los umbrales de fluctuación son ligeramente menores que en el caso base, sugiriendo que la presencia de una partícula directriz constante contribuye a estabilizar el movimiento del grupo más rápidamente.
 
 % FIGURA 3
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig3}
-% \caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con trayectoria circular.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura3.png}
+\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con trayectoria circular.}
+\end{figure}
 
 Finalmente, en la Fig. 3 se detalla la evolución correspondiente al sistema regido por un líder de trayectoria circular. Las tolerancias establecidas para capturar la estabilización de $v_a$ en este tercer escenario fueron de 0.001, 0.0045 y 0.025 para $\eta=0.1$, $\eta=1$ y $\eta=3$, respectivamente. Al igual que en las condiciones anteriores, la dispersión temporal del parámetro de orden muestra una dependencia directa con la intensidad de la perturbación angular $\eta$.
 
@@ -334,25 +339,25 @@ A medida que el ruido aumenta, se observa una disminución progresiva de $v_a$, 
 Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
 
 % FIGURA 4
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig4}
-% \caption{Polarización en función del ruido para un sistema sin partícula líder.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura4.png}
+\caption{Polarización en función del ruido para un sistema sin partícula líder.}
+\end{figure}
 
 % FIGURA 5
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig5}
-% \caption{Polarización en función del ruido para un sistema con líder de dirección fija.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura5.png}
+\caption{Polarización en función del ruido para un sistema con líder de dirección fija.}
+\end{figure}
 
 % FIGURA 6
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig6}
-% \caption{Polarización en función del ruido para un sistema con líder circular.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura6.png}
+\caption{Polarización en función del ruido para un sistema con líder circular.}
+\end{figure}
 
 \subsection{Comparativa entre escenarios con distintos líderes}
 
@@ -365,11 +370,11 @@ En contraste, el escenario con líder de trayectoria circular presenta, en gener
 No obstante, las diferencias observadas se encuentran dentro del orden de magnitud de las barras de error, lo que indica que el impacto del tipo de liderazgo sobre la polarización global es limitado en comparación con la influencia dominante del ruido.
 
 % FIGURA 7
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig7}
-% \caption{Polarización en función del ruido para los tres sistemas.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura7.png}
+\caption{Polarización en función del ruido para los tres sistemas.}
+\end{figure}
 
 \subsection{Influencia de la densidad}
 
@@ -380,34 +385,34 @@ A nivel macroscópico, los resultados obtenidos muestran un comportamiento cuali
 Para determinar el inicio del régimen estacionario en estos nuevos escenarios (tomando como caso de estudio el sistema sin líder), se aplicó el mismo criterio cuantitativo de estabilidad de fluctuaciones previamente descrito, evaluando las evoluciones temporales de forma independiente.
 
 % FIGURA 8
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig8}
-% \caption{Polarización vs tiempo para $\rho=2$, $\eta=0.1$.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura8.png}
+\caption{Polarización vs tiempo para $\rho=2$, $\eta=0.1$.}
+\end{figure}
 
 % FIGURA 9
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig9}
-% \caption{Polarización vs tiempo para $\rho=2$, $\eta=3$.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura9.png}
+\caption{Polarización vs tiempo para $\rho=2$, $\eta=3$.}
+\end{figure}
 
 Para estos casos, se determinaron empíricamente tolerancias de 0.001 y 0.03.
 
 % FIGURA 10
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig10}
-% \caption{Polarización vs tiempo para $\rho=8$, $\eta=0.1$.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura10.png}
+\caption{Polarización vs tiempo para $\rho=8$, $\eta=0.1$.}
+\end{figure}
 
 % FIGURA 11
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{fig11}
-% \caption{Polarización vs tiempo para $\rho=8$, $\eta=3$.}
-% \end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura11.png}
+\caption{Polarización vs tiempo para $\rho=8$, $\eta=3$.}
+\end{figure}
 
 Es notable cómo, ante el mismo nivel de ruido elevado ($\eta=3$), el sistema más denso presenta una fluctuación menor. Esto confirma que una mayor cantidad de partículas por unidad de área contribuye a mitigar la dispersión del observable $v_a$.
 
@@ -416,7 +421,7 @@ En particular, para valores bajos de densidad, el efecto de la partícula líder
 % FIGURA 12
 % \begin{figure}[h]
 % \centering
-% \includegraphics[width=0.8\textwidth]{fig12}
+% \includegraphics[width=0.8\textwidth]{figuras/figura12}
 % \caption{Configuración espacial para $\rho=2$, $\eta=3$.}
 % \end{figure}
 
