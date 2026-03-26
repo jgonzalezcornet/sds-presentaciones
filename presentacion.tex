@@ -90,15 +90,27 @@
 \begin{frame}{Diagrama de la Arquitectura}
     \begin{figure}[htbp]
         \centering
-%        \includegraphics[width=0.45\textwidth]{resources/diagrama-uml.png}
+        \includegraphics[width=1\textwidth]{resources/diagrama-uml.png}
     \end{figure}
 \end{frame}
 
 \begin{frame}{Algoritmo Implementado}
-    \begin{figure}[htbp]
-        \centering
-%        \includegraphics[width=0.9\textwidth]{resources/algorithm.png}
-    \end{figure}
+    \begin{algorithm}[H]
+    \small
+        \caption{Paso de simulación — Modelo de Vicsek}
+        \begin{algorithmic}[1]
+            \State Calcular vecinos $\mathcal{N}_i$ de cada partícula $i$ con $r_c$
+            \For{cada partícula $i \in \{1, \dots, N\}$}
+                \State $\theta_i^{\text{new}} \gets \arctan\!\left(\dfrac{\displaystyle\sum_{j \in \mathcal{N}_i \cup \{i\}} \sin\theta_j}{\displaystyle\sum_{j \in \mathcal{N}_i \cup \{i\}} \cos\theta_j}\right) + \eta\left(U - \tfrac{1}{2}\right)$
+            \EndFor
+            \For{cada partícula $i \in \{1, \dots, N\}$}
+                \State $\theta_i \gets \theta_i^{\text{new}}$
+                \State $\vec{x}_i \gets \vec{x}_i + \vec{v}_i \,\Delta t \pmod{L}$
+            \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+    \vspace{0.2cm}
+    \footnotesize{$U \sim \mathcal{U}(0,1)$; condiciones de contorno periódicas}
 \end{frame}
 
 % Sección 3
