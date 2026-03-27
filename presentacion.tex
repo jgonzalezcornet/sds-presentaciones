@@ -118,15 +118,17 @@
 \begin{frame}{Simulaciones}
     Parámetros de entrada fijos:
     \begin{itemize}
+    \item $dt=1$ - Paso temporal
         \item $r_c=1$ - Radio de Interacción
         \item $v=0.03$ - Módulo de la Velocidad
+        \item $L\in10$ - Longitud del Lado de la Celda
     \end{itemize}
     Parámetros de entrada variables:
     \begin{itemize}
-        \item $N\in[300,2000]$ - Cantidad de Partículas
-        \item $L\in[5, 25]$ - Longitud del Lado de la Celda
+        \item $\rho\in[2, 8]$ - Densidad de Partículas
         \item $T\in[300, 2000]$ - Cantidad de Pasos
-        \item $\eta\in[0, 2\pi]$ - Ruido
+        \item $\eta\in[0, 5]$ - Ruido
+        \item $N = \lfloor \rho \cdot L^2 \rfloor$ - Cantidad de Partículas
     \end{itemize}
 \end{frame}
 
@@ -138,24 +140,6 @@
     \begin{itemize}
         \item Orden: Tiende a uno.
         \item Desorden: Tiende a cero.
-    \end{itemize}
-    \vspace{0.5cm}
-        Para cada $\eta \in \{0.1,\;0.5,\;1.0,\;2.0,\;3.14,\;4.7,\;6.28\}$ se ejecutaron 5 combinaciones de $N$ y $L$ manteniendo $\rho=4$ con $T=1000$.\\
-        Luego se ejecutaron 13 simulaciones con $L=25$, $\eta=0.75$ y variando $N$.
-\end{frame}
-
-\begin{frame}{Desvío Estándar}
-    Para las barras de error en los gráficos: Desvío Estándar
-    \vspace{0.5cm}
-    \begin{itemize}
-        \item Sea $\{ v_a^{(1)}, v_a^{(2)}, \dots, v_a^{(M)} \}$ el conjunto de valores del observable en la región estacionaria.
-        \begin{equation*}
-            \overline{v_a} = \frac{1}{M} \sum_{i=1}^{M} v_a^{(i)} .
-        \end{equation*}
-        \item Entonces
-        \begin{equation*}
-            \sigma_{v_a} = \sqrt{\frac{1}{M-1} \sum_{i=1}^{M} \left( v_a^{(i)} - \overline{v_a} \right)^2 } .
-        \end{equation*}
     \end{itemize}
 \end{frame}
 
