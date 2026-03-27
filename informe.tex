@@ -172,33 +172,16 @@ La arquitectura de la implementación implica las siguientes responsabilidades:
 Para la simulación computacional, la actualización de las posiciones y ángulos definidos en el modelo matemático se traduce en el procedimiento descrito en el Algoritmo 1. 
 Para optimizar la búsqueda de partículas vecinas dentro del radio de interacción $r_c$, se reutilizó la implementación del método de Cell Index desarrollada en el Trabajo Práctico N°1. Este método devuelve, para cada partícula, una lista con los índices de aquellas que se encuentran en su vecindad, obteniendo así una estructura de datos eficiente donde a cada agente i se le asocia el conjunto de sus vecinos interactuantes.
 
-\textbf{Algoritmo: Paso de simulación (modelo de Vicsek)}
-\begin{enumerate}
-\item Identificación de vecinos dentro del radio de interacción $r_c$ mediante el método de Cell Index, reutilizando la implementación desarrollada en el Trabajo Práctico N°1.
-\item Cálculo del ángulo promedio de las partículas vecinas.
-\item Incorporación de un término de ruido uniforme $\Delta \theta$.
-\item Actualización de direcciones y posiciones, aplicando condiciones periódicas de contorno.
-\end{enumerate}
-
-El algoritmo ejecutado en cada paso de la simulación se describe a continuación:
-
 \begin{center}
 \begin{tcolorbox}[width=0.9\textwidth, colback=white, colframe=black, boxrule=0.6pt]
-\textbf{Algoritmo: Paso de simulación (modelo de Vicsek)}
-
 \begin{enumerate}
-\item Generar un valor de ruido aleatorio para cada partícula
-\item Determinar los vecinos de cada partícula mediante el método de Cell Index
-\item Para cada partícula $i$:
-\begin{itemize}
-\item Calcular el ángulo promedio considerando la partícula y sus vecinos
-\end{itemize}
-\item Actualizar la dirección de cada partícula como la suma del ángulo promedio y el ruido
-\item Calcular las componentes de velocidad $(v_x, v_y)$
-\item Actualizar las posiciones aplicando condiciones periódicas de contorno
-\item Retornar el nuevo estado del sistema
+    \item Identificación de vecinos dentro del radio de interacción $r_c$ mediante el método de Cell Index, reutilizando la implementación desarrollada en el Trabajo Práctico N°1.
+    \item Cálculo del ángulo promedio de las partículas vecinas.
+    \item Incorporación de un término de ruido uniforme $\Delta \theta$.
+    \item Actualización de direcciones y posiciones, aplicando condiciones periódicas de contorno.
 \end{enumerate}
 \end{tcolorbox}
+\small{Algoritmo 1: Paso de simulación, modelo de Vicsek}
 \end{center}
 
 \subsection{Formato de Datos y Reproducibilidad}
@@ -437,7 +420,7 @@ Los resultados obtenidos evidencian que el ruido constituye el principal factor 
 
 En cuanto a la influencia de la partícula líder, se encontró que su efecto sobre la polarización global es prácticamente nulo en comparación con el impacto dominante del ruido. Al contrastar los escenarios con líder de dirección fija y líder de trayectoria circular, no se observan diferencias en el grado de orden; las curvas de polarización resultan virtualmente idénticas a la del sistema base y cualquier mínima variación se encuentra dentro del orden de magnitud de las barras de error y las fluctuaciones naturales del sistema.
 
-Por otro lado, el análisis de la densidad revela que su efecto es fundamental para la consolidación del movimiento cooperativo. En sistemas de baja densidad, la gran distancia media entre partículas dificulta la propagación de la información, resultando en un enjambre altamente disperso e incapaz de mantener el consenso. Esto se hace evidente en el escenario sin líder al observar la Fig. U, donde para un ruido elevado ($\eta$=3) y una baja densidad ($\rho$=2), la polarización sufre fluctuaciones severas y caóticas. Por el contrario, tal como refleja la Fig. W para el mismo escenario bajo el mismo nivel de ruido pero con una densidad elevada ($\rho$=8), el enjambre logra atenuar estas perturbaciones y estabilizarse notablemente. En este sentido, una mayor densidad $\rho$ favorece el orden colectivo: al aumentar las interacciones locales, el sistema logra mantener una polarización $v_a$ más elevada y estable, mitigando el efecto ante niveles altos de ruido $\eta$.
+Por otro lado, el análisis de la densidad revela que su efecto es fundamental para la consolidación del movimiento cooperativo. En sistemas de baja densidad, la gran distancia media entre partículas dificulta la propagación de la información, resultando en un enjambre altamente disperso e incapaz de mantener el consenso. Esto se hace evidente en el escenario sin líder al observar la Fig. 9, donde para un ruido elevado ($\eta$=3) y una baja densidad ($\rho$=2), la polarización sufre fluctuaciones severas y caóticas. Por el contrario, tal como refleja la Fig. 11 para el mismo escenario bajo el mismo nivel de ruido pero con una densidad elevada ($\rho$=8), el enjambre logra atenuar estas perturbaciones y estabilizarse notablemente. En este sentido, una mayor densidad $\rho$ favorece el orden colectivo: al aumentar las interacciones locales, el sistema logra mantener una polarización $v_a$ más elevada y estable, mitigando el efecto ante niveles altos de ruido $\eta$.
 
 En conjunto, los resultados muestran que el comportamiento macroscópico del sistema surge de la competencia directa entre el ruido y las interacciones locales promovidas por la densidad, siendo el ruido el principal determinante del grado de desorden, mientras que la presencia y geometría de una partícula líder resulta tener un impacto marginal sobre el orden colectivo global.
 
