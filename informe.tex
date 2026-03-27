@@ -14,6 +14,8 @@
 \usepackage[most]{tcolorbox}
 \usepackage{bm}
 \usepackage{caption}
+\usepackage{float}
+\usepackage{placeins}
 
 \geometry{margin=2.5cm}
 \onehalfspacing
@@ -57,18 +59,9 @@ Fecha de entrega: 30 de Marzo de 2026\\
 \newpage
 \section{Introducción}
 
-El presente trabajo práctico tiene como objetivo el estudio y la implementación computacional del modelo de bandadas para sistemas de partículas autopropulsadas, tomando como base el modelo introducido por T. Vicsek et al. (1995) [1]. Este sistema permite investigar la emergencia de movimiento ordenado y fenómenos colectivos presentes en la naturaleza, tales como bandadas de aves o bancos de peces, donde a partir de interacciones locales simples se produce una transición de fase cinética desde un estado desordenado hacia un movimiento cooperativo macroscópico.
+El presente trabajo práctico tiene como objetivo el estudio y la implementación computacional del modelo de bandadas para sistemas de partículas autopropulsadas, tomando como base el modelo introducido por T. Vicsek et al. (1995). Este sistema permite investigar la emergencia de movimiento ordenado y fenómenos colectivos presentes en la naturaleza, tales como bandadas de aves o bancos de peces. En estos sistemas, a partir de interacciones locales simples, se produce una transición de fase cinética continua desde un estado desordenado hacia un movimiento cooperativo macroscópico.
 
-A diferencia del modelo estándar original, el aspecto central de este proyecto es la incorporación de una partícula líder en el enjambre. Esta partícula particular influye en la dirección de sus vecinos cercanos, pero su propio movimiento está predefinido y no se ve alterado por la dinámica del resto del grupo. Para analizar el impacto de esta geometría de movimiento sobre el grado de orden global frente a distintas intensidades de ruido, el estudio se divide rigurosamente en tres escenarios experimentales:
-
-\begin{itemize}
-\item A) Sin líder: El modelo estándar descrito originalmente.
-\item B) Líder con dirección fija: Se incorpora una partícula cuya dirección de movimiento se mantiene constante en el tiempo, definida aleatoriamente al inicio de la simulación.
-\item C) Líder con trayectoria circular: La partícula líder describe una trayectoria circular prefijada de radio $R$, interactuando de forma continua con el resto del sistema.
-\end{itemize}
-
-En este contexto, el objetivo del trabajo es analizar cómo la presencia de un líder y la intensidad del ruido afectan la transición hacia el orden colectivo en el sistema.
-
+A diferencia del modelo estándar original, el aspecto central y novedoso de este proyecto es la incorporación de una partícula líder en el enjambre. El propósito de esta adición es analizar el impacto que tienen distintas geometrías de movimiento directriz sobre el grado de orden global del sistema al ser sometido a diferentes intensidades de ruido angular. De esta manera, el trabajo se enfoca en caracterizar la transición de fase y evaluar cómo la competencia entre las perturbaciones aleatorias y la presencia de un agente con trayectoria predefinida afecta la consolidación del movimiento colectivo.
 \newpage
 \section{Modelo}
 
@@ -176,10 +169,10 @@ La arquitectura de la implementación implica las siguientes responsabilidades:
 
 \subsection{Algoritmo}
 
-La dinámica del sistema se modela en tiempo discreto, utilizando un paso temporal $\Delta t=1$, en concordancia con el trabajo de referencia, y considerando una velocidad constante $v$ para todas las partículas.
+Para la simulación computacional, la actualización de las posiciones y ángulos definidos en el modelo matemático se traduce en el procedimiento descrito en el Algoritmo 1. 
+Para optimizar la búsqueda de partículas vecinas dentro del radio de interacción $r_c$, se reutilizó la implementación del método de Cell Index desarrollada en el Trabajo Práctico N°1. Este método devuelve, para cada partícula, una lista con los índices de aquellas que se encuentran en su vecindad, obteniendo así una estructura de datos eficiente donde a cada agente i se le asocia el conjunto de sus vecinos interactuantes.
 
-En cada iteración se realizan las siguientes etapas:
-
+\textbf{Algoritmo: Paso de simulación (modelo de Vicsek)}
 \begin{enumerate}
 \item Identificación de vecinos dentro del radio de interacción $r_c$ mediante el método de Cell Index, reutilizando la implementación desarrollada en el Trabajo Práctico N°1.
 \item Cálculo del ángulo promedio de las partículas vecinas.
@@ -282,15 +275,13 @@ Se variaron los siguientes parámetros:
 
 \subsection{Diseño experimental}
 
-Se consideraron los tres escenarios de liderazgo definidos en el modelo: sin líder, líder con dirección fija y líder con trayectoria circular.
+El diseño experimental contempló simulaciones independientes para las tres configuraciones de liderazgo definidas previamente en la Sección 2.2.
 
-Para caracterizar el comportamiento del sistema, se realizaron simulaciones utilizando valores representativos del ruido ($\eta=0.1, 1, 3$), manteniendo fija la densidad en $\rho=4$. En estos casos, se utilizaron 500 pasos temporales, lo que permitió analizar la evolución del sistema y la relajación hacia el estado estacionario.
+Para caracterizar el comportamiento inicial del sistema, se realizaron simulaciones utilizando valores representativos del ruido ($\eta$=0.1, 1, 3), manteniendo fija la densidad en $\rho=4$. En estos casos, se utilizaron los pasos temporales suficientes que permitieran analizar la evolución de la bandada y su relajación. A partir de estas simulaciones se estudió la evolución temporal de la polarización. El observable escalar se calculó promediando la polarización exclusivamente durante el régimen estacionario, cuyo criterio cuantitativo de inicio y descarte del transitorio inicial se encuentra detallado en la Sección 5.1.
 
-A partir de estas simulaciones se estudió la evolución temporal de la polarización. Para el cálculo del observable escalar, se consideraron únicamente los valores de la polarización una vez alcanzado el régimen estacionario. En cada simulación, este régimen se determinó a partir del análisis de la evolución temporal, descartando un transitorio inicial y promediando el observable sobre los pasos restantes.
+Adicionalmente, se realizaron 50 ejecuciones independientes para distintos valores del ruido $\eta$, con el fin de obtener la polarización $v_a$ promedio y estimar su variabilidad estadística frente a las fluctuaciones.
 
-Adicionalmente, se realizaron 50 ejecuciones independientes para distintos valores de $\eta$, con el fin de obtener la polarización promedio y estimar su variabilidad.
-
-Finalmente, se llevaron a cabo simulaciones adicionales para $\rho=2$ y $\rho=8$, con el objetivo de analizar el efecto de la densidad sobre la polarización y la influencia del líder en el sistema.
+Finalmente, se llevaron a cabo simulaciones adicionales para $\rho=2$ y $\rho=8$, con el objetivo de analizar el efecto específico de la densidad sobre la polarización macroscópica y la dinámica grupal del sistema.
 
 \newpage
 \section{Resultados}
@@ -339,25 +330,27 @@ A medida que el ruido aumenta, se observa una disminución progresiva de $v_a$, 
 Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
 
 % FIGURA 4
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura4.png}
 \caption{Polarización en función del ruido para un sistema sin partícula líder.}
 \end{figure}
 
 % FIGURA 5
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura5.png}
 \caption{Polarización en función del ruido para un sistema con líder de dirección fija.}
 \end{figure}
 
 % FIGURA 6
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura6.png}
 \caption{Polarización en función del ruido para un sistema con líder circular.}
 \end{figure}
+
+\FloatBarrier
 
 \subsection{Comparativa entre escenarios con distintos líderes}
 
@@ -370,77 +363,83 @@ En contraste, el escenario con líder de trayectoria circular presenta, en gener
 No obstante, las diferencias observadas se encuentran dentro del orden de magnitud de las barras de error, lo que indica que el impacto del tipo de liderazgo sobre la polarización global es limitado en comparación con la influencia dominante del ruido.
 
 % FIGURA 7
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura7.png}
 \caption{Polarización en función del ruido para los tres sistemas.}
 \end{figure}
 
+\FloatBarrier
+
 \subsection{Influencia de la densidad}
 
-Con el objetivo de analizar el efecto de la densidad sobre el comportamiento del sistema, se realizaron simulaciones adicionales para $\rho=2$ y $\rho=8$, considerando distintos valores del parámetro de ruido y las tres configuraciones de liderazgo.
+Con el objetivo de analizar el efecto de la densidad sobre el comportamiento del sistema, se realizaron simulaciones adicionales para $\rho=2$ y $\rho=8$, considerando distintos valores del parámetro de ruido. Para este análisis detallado, se tomó como caso de estudio el escenario del sistema base sin líder.
 
 A nivel macroscópico, los resultados obtenidos muestran un comportamiento cualitativamente similar al caso base $\rho=4$, observándose en todos los casos una transición desde un estado ordenado hacia uno desordenado a medida que aumenta el ruido. No obstante, se identifican diferencias en la dinámica del sistema asociadas a la densidad.
 
-Para determinar el inicio del régimen estacionario en estos nuevos escenarios (tomando como caso de estudio el sistema sin líder), se aplicó el mismo criterio cuantitativo de estabilidad de fluctuaciones previamente descrito, evaluando las evoluciones temporales de forma independiente.
+Para determinar el inicio del régimen estacionario en estos nuevos escenarios, se aplicó el mismo criterio cuantitativo de estabilidad de fluctuaciones previamente descrito, evaluando las evoluciones temporales de forma independiente. En la Fig. \ref{fig:densidad2_01} y la Fig. \ref{fig:densidad2_3} se observa el comportamiento de la polarización para el sistema menos denso ($\rho=2$) sometido a un ruido bajo ($\eta=0.1$) y a un ruido elevado ($\eta=3$), respectivamente. Para estos casos, se determinaron empíricamente tolerancias de 0.001 y 0.03.
 
 % FIGURA 8
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura8.png}
 \caption{Polarización vs tiempo para $\rho=2$, $\eta=0.1$.}
+\label{fig:densidad2_01}
 \end{figure}
 
 % FIGURA 9
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura9.png}
 \caption{Polarización vs tiempo para $\rho=2$, $\eta=3$.}
+\label{fig:densidad2_3}
 \end{figure}
 
-Para estos casos, se determinaron empíricamente tolerancias de 0.001 y 0.03.
+Por otro lado, la Fig. \ref{fig:densidad8_01} y la Fig. \ref{fig:densidad8_3} exhiben la evolución temporal del observable al incrementar la densidad del sistema ($\rho=8$) para los mismos niveles de ruido ($\eta=0.1$ y $\eta=3$), requiriendo tolerancias de 0.001 y 0.02.
 
 % FIGURA 10
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura10.png}
 \caption{Polarización vs tiempo para $\rho=8$, $\eta=0.1$.}
+\label{fig:densidad8_01}
 \end{figure}
 
 % FIGURA 11
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura11.png}
 \caption{Polarización vs tiempo para $\rho=8$, $\eta=3$.}
+\label{fig:densidad8_3}
 \end{figure}
 
-Es notable cómo, ante el mismo nivel de ruido elevado ($\eta=3$), el sistema más denso presenta una fluctuación menor. Esto confirma que una mayor cantidad de partículas por unidad de área contribuye a mitigar la dispersión del observable $v_a$.
+Es notable cómo, ante el mismo nivel de ruido elevado ($\eta=3$), el sistema más denso presenta un umbral de fluctuación menor (0.02 frente a 0.03). Esto confirma que una mayor cantidad de partículas por unidad de área contribuye a mitigar la dispersión del observable $v_a$.
 
-En particular, para valores bajos de densidad, el efecto de la partícula líder resulta más significativo, ya que la menor cantidad de interacciones entre partículas reduce la influencia del enjambre sobre la dinámica global. En este régimen, la dirección impuesta por el líder tiende a propagarse con mayor facilidad en el sistema.
+Para ilustrar gráficamente la marcada dispersión y la dificultad de alcanzar un orden global en sistemas poco densos con perturbaciones elevadas, la Fig. \ref{fig:animacion_densidad} presenta una captura de la configuración espacial correspondiente al escenario con $\rho=2$ y $\eta=3$.
 
 % FIGURA 12
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{figuras/figura12}
-% \caption{Configuración espacial para $\rho=2$, $\eta=3$.}
-% \end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura12.png}
+\caption{Configuración espacial para $\rho=2$, $\eta=3$.}
+\label{fig:animacion_densidad}
+\end{figure}
 
-Esto provoca que el sistema se encuentre muy disperso, formando únicamente grupos polarizados pequeños e inestables que son rápidamente desarmados por el ruido, impidiendo que el enjambre consolide una dirección de movimiento unificada.
+En esta imagen se evidencia cómo la reducción en la cantidad total de partículas incrementa significativamente la distancia media entre ellas, lo que disminuye la probabilidad de encontrar vecinos dentro del radio de interacción $r_c$. Esto provoca que el sistema se encuentre muy disperso, formando únicamente grupos polarizados pequeños e inestables que son rápidamente desarmados por el ruido, impidiendo que el enjambre consolide una dirección de movimiento unificada.
 
-Por el contrario, para densidades elevadas, la interacción colectiva entre partículas adquiere mayor relevancia, lo que atenúa la influencia del líder. En este caso, el comportamiento del sistema se encuentra principalmente determinado por la dinámica grupal, disminuyendo el impacto de la geometría de movimiento del líder sobre la polarización global.
-
-\newpage
+Por el contrario, para densidades elevadas, la interacción colectiva entre partículas adquiere mayor relevancia. En este caso, el aumento de las interacciones locales permite que el sistema logre mantener una polarización $v_a$ más elevada y estable, mitigando eficazmente el efecto desestabilizador ante niveles altos de ruido $\eta$.
+\clearpage
 \section{Conclusiones}
 
 En el presente trabajo se implementó y analizó el modelo de Vicsek para sistemas de partículas autopropulsadas, incorporando una partícula líder con distintas geometrías de movimiento. A partir de las simulaciones realizadas, se estudió el comportamiento del sistema en función del parámetro de ruido $\eta$ y de la densidad $\rho$, evaluando su impacto sobre el grado de orden colectivo medido mediante la polarización.
 
-Los resultados obtenidos evidencian que el ruido constituye el principal factor en la dinámica del sistema, determinando la transición continua desde un estado ordenado, caracterizado por un alto alineamiento entre partículas, hacia un régimen desordenado en el que las direcciones de movimiento se distribuyen de manera aleatoria. Este comportamiento se observa de manera consistente en todas las configuraciones de liderazgo consideradas.
+Los resultados obtenidos evidencian que el ruido constituye el principal factor en la dinámica del sistema, determinando la transición continua desde un estado ordenado, caracterizado por un alto alineamiento entre partículas, hacia un régimen desordenado en el que las direcciones de movimiento se distribuyen de manera aleatoria. Este comportamiento se observa de manera consistente en todas las configuraciones consideradas.
 
-En cuanto a la influencia de la partícula líder, se encontró que su efecto sobre la polarización global es limitado en comparación con el impacto del ruido. Si bien se observan diferencias entre las geometrías de movimiento, particularmente una leve mayor estabilidad en el caso de dirección fija, estas se encuentran dentro del orden de magnitud de las fluctuaciones del sistema.
+En cuanto a la influencia de la partícula líder, se encontró que su efecto sobre la polarización global es prácticamente nulo en comparación con el impacto dominante del ruido. Al contrastar los escenarios con líder de dirección fija y líder de trayectoria circular, no se observan diferencias en el grado de orden; las curvas de polarización resultan virtualmente idénticas a la del sistema base y cualquier mínima variación se encuentra dentro del orden de magnitud de las barras de error y las fluctuaciones naturales del sistema.
 
-Por otro lado, el análisis de la densidad revela que su efecto se manifiesta principalmente en la dinámica de interacción entre partículas. En sistemas de baja densidad, la influencia del líder se vuelve más significativa debido a la menor cantidad de interacciones locales, lo que facilita la propagación de su dirección. En contraste, para densidades elevadas, el comportamiento colectivo del enjambre predomina, reduciendo el impacto del líder sobre la dinámica global.
+Por otro lado, el análisis de la densidad revela que su efecto es fundamental para la consolidación del movimiento cooperativo. En sistemas de baja densidad, la gran distancia media entre partículas dificulta la propagación de la información, resultando en un enjambre altamente disperso e incapaz de mantener el consenso. Esto se hace evidente en el escenario sin líder al observar la Fig. U, donde para un ruido elevado ($\eta$=3) y una baja densidad ($\rho$=2), la polarización sufre fluctuaciones severas y caóticas. Por el contrario, tal como refleja la Fig. W para el mismo escenario bajo el mismo nivel de ruido pero con una densidad elevada ($\rho$=8), el enjambre logra atenuar estas perturbaciones y estabilizarse notablemente. En este sentido, una mayor densidad $\rho$ favorece el orden colectivo: al aumentar las interacciones locales, el sistema logra mantener una polarización $v_a$ más elevada y estable, mitigando el efecto ante niveles altos de ruido $\eta$.
 
-En conjunto, los resultados muestran que el comportamiento macroscópico del sistema surge de la competencia entre el ruido, las interacciones locales y las condiciones impuestas por el liderazgo, siendo el primero el principal determinante del orden colectivo.
+En conjunto, los resultados muestran que el comportamiento macroscópico del sistema surge de la competencia directa entre el ruido y las interacciones locales promovidas por la densidad, siendo el ruido el principal determinante del grado de desorden, mientras que la presencia y geometría de una partícula líder resulta tener un impacto marginal sobre el orden colectivo global.
 
 \newpage
 \section*{Referencias}
