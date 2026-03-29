@@ -76,16 +76,6 @@
 
 % Sección 2
 \section{Implementación}
-\begin{frame}{Arquitectura}
-  Implementación:
-  \begin{itemize}
-      \item \texttt{hola}
-  \end{itemize}
-  Estructura:
-  \begin{itemize}
-      \item hola
-  \end{itemize}
-\end{frame}
 
 \begin{frame}{Diagrama de la Arquitectura}
     \begin{figure}[htbp]
@@ -118,16 +108,16 @@
 \begin{frame}{Simulaciones}
     Parámetros de entrada fijos:
     \begin{itemize}
-    \item $dt=1$ - Paso temporal
+        \item $dt=1$ - Paso temporal
         \item $r_c=1$ - Radio de Interacción
         \item $v=0.03$ - Módulo de la Velocidad
-        \item $L\in10$ - Longitud del Lado de la Celda
+        \item $L=10$ - Longitud del Lado de la Celda
     \end{itemize}
     Parámetros de entrada variables:
     \begin{itemize}
         \item $\rho\in[2, 8]$ - Densidad de Partículas
         \item $T\in[300, 2000]$ - Cantidad de Pasos
-        \item $\eta\in[0, 5]$ - Ruido
+        \item $\eta\in[0.1, 5]$ - Ruido
         \item $N = \lfloor \rho \cdot L^2 \rfloor$ - Cantidad de Partículas
     \end{itemize}
 \end{frame}
