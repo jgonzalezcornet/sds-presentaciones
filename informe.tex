@@ -238,12 +238,10 @@ Luego se provee el detalle step a step del modelo:
 Para todas las simulaciones se utilizaron los siguientes parámetros:
 
 \begin{itemize}
-\item $L=10$: longitud del lado del dominio cuadrado de simulación
-\item $\rho=4$: densidad de partículas
-\item $N=400$: número total de partículas
-\item $v=0.03$: velocidad de las partículas
-\item $r_c=1$: radio de interacción
-\item $dt=1$: paso temporal
+    \item $dt=1$ - Paso temporal
+    \item $r_c=1$ - Radio de Interacción
+    \item $v=0.03$ - Módulo de la Velocidad
+    \item $L=10$ - Longitud del Lado de la Celda
 \end{itemize}
 
 \subsection{Parámetros variables}
@@ -251,16 +249,17 @@ Para todas las simulaciones se utilizaron los siguientes parámetros:
 Se variaron los siguientes parámetros:
 
 \begin{itemize}
-\item $\eta$ (ruido): valores en el intervalo $[0.1, 5]$
-\item $\rho$ (densidad): además del valor principal $\rho=4$, se consideraron $\rho=2$ y $\rho=8$.
-\item steps: cantidad de pasos temporales, ajustada según el análisis requerido en cada caso.
+\item $\rho\in[2, 8]$ - Densidad de Partículas
+    \item $T\in[300, 2000]$ - Cantidad de Pasos
+    \item $\eta\in[0.1, 5]$ - Ruido
+    \item $N = \lfloor \rho \cdot L^2 \rfloor$ - Cantidad de Partículas
 \end{itemize}
 
 \subsection{Diseño experimental}
 
 El diseño experimental contempló simulaciones independientes para las tres configuraciones de liderazgo definidas previamente en la Sección 2.2.
 
-Para caracterizar el comportamiento inicial del sistema, se realizaron simulaciones utilizando valores representativos del ruido ($\eta$=0.1, 1, 3), manteniendo fija la densidad en $\rho=4$. En estos casos, se utilizaron los pasos temporales suficientes que permitieran analizar la evolución de la bandada y su relajación. A partir de estas simulaciones se estudió la evolución temporal de la polarización. El observable escalar se calculó promediando la polarización exclusivamente durante el régimen estacionario, cuyo criterio cuantitativo de inicio y descarte del transitorio inicial se encuentra detallado en la Sección 5.1.
+Para caracterizar el comportamiento inicial del sistema, se realizaron simulaciones utilizando valores representativos del ruido ($\eta$=0.5, 2 y 5), manteniendo fija la densidad en $\rho=4$. En estos casos, se utilizaron los pasos temporales suficientes que permitieran analizar la evolución de la bandada y su relajación. A partir de estas simulaciones se estudió la evolución temporal de la polarización. El observable escalar se calculó promediando la polarización exclusivamente durante el régimen estacionario, cuyo criterio cuantitativo de inicio y descarte del transitorio inicial se encuentra detallado en la Sección 5.1.
 
 Adicionalmente, se realizaron 50 ejecuciones independientes para distintos valores del ruido $\eta$, con el fin de obtener la polarización $v_a$ promedio y estimar su variabilidad estadística frente a las fluctuaciones.
 
@@ -273,7 +272,7 @@ Los resultados obtenidos a partir de las simulaciones se presentan y analizan a 
 
 \subsection{Evolución temporal del observable}
 
-En las Fig. 1, Fig. 2 y Fig. 3 expuestas a continuación se presentan las evoluciones temporales de la polarización ($v_a$) correspondientes a las tres condiciones experimentales detalladas previamente. En cada una de estas figuras se realiza una superposición de tres valores del parámetro de ruido ($\eta = 0.1$, $\eta = 1$ y $\eta = 3$), permitiendo un análisis comparativo directo del impacto del ruido en la dinámica del sistema para cada caso de estudio. Estas representaciones gráficas tienen como propósito fundamental justificar la selección de la ventana temporal de medición. Al observar la convergencia de las curvas, se establecen los criterios para identificar el inicio del estado estacionario, garantizando que el promedio del observable ($v_a$) se realice sobre un intervalo donde las fluctuaciones se han estabilizado y el transitorio inicial ha sido superado.
+En las Fig. 1, Fig. 2 y Fig. 3 expuestas a continuación se presentan las evoluciones temporales de la polarización ($v_a$) correspondientes a las tres condiciones experimentales detalladas previamente. En cada una de estas figuras se realiza una superposición de tres valores del parámetro de ruido ($\eta = 0.5$, $\eta = 2$ y $\eta = 5$), permitiendo un análisis comparativo directo del impacto del ruido en la dinámica del sistema para cada caso de estudio. Estas representaciones gráficas tienen como propósito fundamental justificar la selección de la ventana temporal de medición. Al observar la convergencia de las curvas, se establecen los criterios para identificar el inicio del estado estacionario, garantizando que el promedio del observable ($v_a$) se realice sobre un intervalo donde las fluctuaciones se han estabilizado y el transitorio inicial ha sido superado.
 
 Para determinar el instante de inicio del estado estacionario ($t_0$) en cada configuración, se estableció un criterio cuantitativo basado en la estabilidad de las fluctuaciones del observable ($v_a$). Se definió una banda de tolerancia específica para cada caso; el estado estacionario se considera alcanzado en el momento en que cinco mediciones consecutivas de la polarización presentan variaciones relativas inferiores a dicha tolerancia. En aquellos casos donde las fluctuaciones inherentes al sistema impiden que se cumpla esta condición antes de transcurrir el 40\% de la simulación, se adopta de manera conservadora este límite temporal ($t_0=0.4T$) como el inicio del régimen estacionario, garantizando así la exclusión del período transitorio inicial.
 
