@@ -268,13 +268,10 @@ Finalmente, se llevaron a cabo simulaciones adicionales para $\rho=2$ y $\rho=8$
 \newpage
 \section{Resultados}
 
-Los resultados obtenidos a partir de las simulaciones se presentan y analizan a continuación.
+A continuación se presentan los resultados obtenidos, agrupados por escenario.
 
-\subsection{Evolución temporal del observable}
-
-En las Fig. 1, Fig. 2 y Fig. 3 expuestas a continuación se presentan las evoluciones temporales de la polarización ($v_a$) correspondientes a las tres condiciones experimentales detalladas previamente. En cada una de estas figuras se realiza una superposición de tres valores del parámetro de ruido ($\eta = 0.5$, $\eta = 2$ y $\eta = 5$), permitiendo un análisis comparativo directo del impacto del ruido en la dinámica del sistema para cada caso de estudio. Estas representaciones gráficas tienen como propósito fundamental justificar la selección de la ventana temporal de medición. Al observar la convergencia de las curvas, se establecen los criterios para identificar el inicio del estado estacionario, garantizando que el promedio del observable ($v_a$) se realice sobre un intervalo donde las fluctuaciones se han estabilizado y el transitorio inicial ha sido superado.
-
-Para determinar el instante de inicio del estado estacionario ($t_0$) en cada configuración, se estableció un criterio cuantitativo basado en la estabilidad de las fluctuaciones del observable ($v_a$). Se definió una banda de tolerancia específica para cada caso; el estado estacionario se considera alcanzado en el momento en que cinco mediciones consecutivas de la polarización presentan variaciones relativas inferiores a dicha tolerancia. En aquellos casos donde las fluctuaciones inherentes al sistema impiden que se cumpla esta condición antes de transcurrir el 40\% de la simulación, se adopta de manera conservadora este límite temporal ($t_0=0.4T$) como el inicio del régimen estacionario, garantizando así la exclusión del período transitorio inicial.
+\subsection{Escenarios sin partícula líder}
+\subsubsection{Evolución temporal del observable}
 
 % FIGURA 1
 \begin{figure}[h]
@@ -283,47 +280,59 @@ Para determinar el instante de inicio del estado estacionario ($t_0$) en cada co
 \caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
 \end{figure}
 
-En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder. Aplicando el criterio descrito, las tolerancias determinadas empíricamente fueron de 0.001 para el caso de bajo ruido ($\eta=0.1$), 0.008 para un ruido intermedio ($\eta=1$) y 0.05 para la simulación con ruido elevado ($\eta=3$). Estos umbrales crecientes reflejan cómo la amplitud de las fluctuaciones naturales del enjambre se magnifica a medida que se incrementa el ruido del sistema.
+En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder.
+
+\subsubsection{Relación entre el ruido del sistema y el observable}
+
+Observamos cómo para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas. A medida que el ruido aumenta, se observa una disminución progresiva de va, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido.
+Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
 
 % FIGURA 2
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura2.png}
 \caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con dirección fija.}
 \end{figure}
 
-De manera análoga, la Fig. 2 exhibe el comportamiento temporal para el escenario que incorpora un líder con dirección fija. Para esta configuración, las tolerancias requeridas para identificar el estado estacionario fueron de 0.001, 0.002 y 0.03 para los niveles de ruido $\eta=0.1$, $\eta=1$ y $\eta=3$, respectivamente. Se puede notar que, ante ruidos moderados e intensos, los umbrales de fluctuación son ligeramente menores que en el caso base, sugiriendo que la presencia de una partícula directriz constante contribuye a estabilizar el movimiento del grupo más rápidamente.
+\subsection{Escenarios con partícula líder de dirección fija}
+
+\subsubsection{Evolución temporal del observable }
 
 % FIGURA 3
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura3.png}
-\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con trayectoria circular.}
+\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con una dirección fija.}
 \end{figure}
 
-Finalmente, en la Fig. 3 se detalla la evolución correspondiente al sistema regido por un líder de trayectoria circular. Las tolerancias establecidas para capturar la estabilización de $v_a$ en este tercer escenario fueron de 0.001, 0.0045 y 0.025 para $\eta=0.1$, $\eta=1$ y $\eta=3$, respectivamente. Al igual que en las condiciones anteriores, la dispersión temporal del parámetro de orden muestra una dependencia directa con la intensidad de la perturbación angular $\eta$.
+La Fig. 3 exhibe el comportamiento temporal para el escenario que incorpora un líder con dirección fija.
 
-\subsection{Relación entre el ruido del sistema y el observable}
-
-En las Fig. 4, Fig. 5 y Fig. 6 se presenta la dependencia del observable $v_a$ con el parámetro de ruido $\eta$ para cada una de las condiciones de liderazgo consideradas. En todos los casos, para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas.
-
-A medida que el ruido aumenta, se observa una disminución progresiva de $v_a$, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido.
-
-Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
+\subsubsection{Relación entre el ruido del sistema y el observable}
 
 % FIGURA 4
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura4.png}
-\caption{Polarización en función del ruido para un sistema sin partícula líder.}
+\caption{Representa la polarización en función del ruido para un sistema con una partícula líder con dirección fija.}
 \end{figure}
+
+En todos los casos, para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas.
+A medida que el ruido aumenta, se observa una disminución progresiva de va, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido.
+Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
+
+\subsection{Escenarios con partícula líder de trayectoria circular}
+
+\subsubsection{Evolución temporal del observable}
 
 % FIGURA 5
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figuras/figura5.png}
-\caption{Polarización en función del ruido para un sistema con líder de dirección fija.}
+\caption{evolución de la polarización con respecto al tiempo, con una partícula líder con una trayectoria circular.}
 \end{figure}
+
+\subsubsection{Relación entre el ruido del sistema y el observable }
+
 
 % FIGURA 6
 \begin{figure}[H]
@@ -335,6 +344,10 @@ Cada punto de las curvas corresponde al promedio de 50 ejecuciones independiente
 \FloatBarrier
 
 \subsection{Comparativa entre escenarios con distintos líderes}
+
+\subsubsection{Evolución temporal del observable}
+
+\subsubsection{Relación entre el ruido del sistema y el observable}
 
 En la Fig. 7 se contrastan los resultados obtenidos para las tres condiciones experimentales consideradas: sistema sin líder, sistema con líder de dirección fija y sistema con líder de trayectoria circular, con el objetivo de analizar la influencia de la geometría del movimiento del líder sobre el grado de orden del sistema.
 
