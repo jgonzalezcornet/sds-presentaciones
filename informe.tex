@@ -146,9 +146,6 @@ El modelo se implementó en Java 21. Posteriormente, para la generación de anim
 			|__ Generator.java
 			|__ Main.java
 			|__ OutputWriter.java
-			tp2-visual/
-			|__ visualizer.py
-			|__ graphs.py
 		\end{Verbatim}
 	\end{minipage}
 \end{center}
@@ -165,8 +162,6 @@ La arquitectura de la implementación implica las siguientes responsabilidades:
 	\item Generator.java: genera las partículas en ubicaciones aleatorias con ángulos aleatorios. En caso de haber líder, también lo crea.
 	\item Main.java: permite ejecutar corridas completas de la simulación. Incluye la definición de los parámetros. Calcula todos los valores necesarios adicionales para el análisis posterior.
 	\item OutputWriter.java: realiza la escritura de los archivos .txt de output requeridos.
-	\item visualizer.py: realiza las animaciones correspondientes basadas en los archivos .txt generados por OutputWriter.java.
-	\item graphs.py:
 \end{itemize}
 
 \subsection{Algoritmo}
