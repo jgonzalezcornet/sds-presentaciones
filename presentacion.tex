@@ -78,10 +78,10 @@
 \section{Implementación}
 
 \begin{frame}{Diagrama de la Arquitectura}
-    \begin{figure}[htbp]
-        \centering
-        \includegraphics[width=1\textwidth]{resources/diagrama-uml.png}
-    \end{figure}
+    \centering
+    \makebox[\textwidth][c]{%
+        \includegraphics[width=1.15\textwidth]{resources/diagrama-uml.png}
+    }
 \end{frame}
 
 \begin{frame}{Algoritmo Implementado}
@@ -135,82 +135,50 @@
 
 % Sección 4
 \section{Resultados}
-\begin{frame}{Animaciones del Sistema}
+\begin{frame}{Escenario - sin partícula líder}
     \begin{minipage}[t]{0.60\textwidth}
         \begin{figure}[H!]
-%            \includegraphics[height=.65\textheight]{resources/animacion-eta-0.1.jpeg}
-            \caption*{\href{https://youtube.com/shorts/tTuYZXHlj-A}{Link a la animación completa.}}
-            \label{animacion-eta-0.1}
+            \caption*{\url{https://youtube.com/shorts/tTuYZXHlj-A}}
         \end{figure}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.30\textwidth}
-        \begin{block}{Datos del Sistema}
+        \begin{block}{Animación}
             \begin{itemize}
-                \item $N=300$
-                \item $L=5$
-                \item $T=300$
-                \item $\eta=0.1$
+                \item $\rho=4$
+                \item $T=1000$
+                \item $\eta=0.5$
             \end{itemize}
         \end{block}
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Animaciones del Sistema}
+\begin{frame}{Escenario - sin partícula líder}
     \begin{minipage}[t]{0.60\textwidth}
         \begin{figure}[H!]
-%            \includegraphics[height=.65\textheight]{resources/animacion-eta-2pi.jpeg}
             \caption*{\href{https://youtube.com/shorts/hZ2bDILFapQ}{Link a la animación completa.}}
-            \label{animacion-eta-2pi}
         \end{figure}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.35\textwidth}
-        \begin{block}{Datos del Sistema}
+        \begin{block}{Animación}
             \begin{itemize}
-                \item $N=300$
-                \item $L=5$
-                \item $T=300$
-                \item $\eta=6.28 (\approx2\pi)$
+                \item $\rho=4$
+                \item $T=1000$
+                \item $\eta=5$
             \end{itemize}
         \end{block}
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Animaciones del Sistema}
-    \begin{minipage}[t]{0.60\textwidth}
-        \begin{figure}[H!]
-%            \includegraphics[height=.65\textheight]{resources/animacion-l-25.jpeg}
-            \caption*{\href{https://www.youtube.com/shorts/jTQ0DtBW6Tg}{Link a la animación completa.}}
-            \label{animacion-l-25}
-        \end{figure}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.35\textwidth}
-        \begin{block}{Datos del Sistema}
-            \begin{itemize}
-                \item $N=300$
-                \item $L=25$
-                \item $T=300$
-                \item $\eta=0.1$
-            \end{itemize}
-        \end{block}
-    \end{minipage}
-\end{frame}
+\begin{frame}{Escenario - sin partícula líder}
+    \centering
+    Evolución temporal del observable
 
-\begin{frame}{Evolución Temporal del Observable}
-    \begin{figure}[H!]
-%        \includegraphics[height=.65\textheight]{resources/grafico-va-t.jpeg}
-        \label{grafico-va-t}
-    \end{figure}
-\end{frame}
+    \includegraphics[width=1\textwidth]{figuras/figura1.png}
 
-\begin{frame}{Relación entre el Ruido del Sistema y el Observable}
-    \begin{figure}[H!]
-%        \includegraphics[height=.65\textheight]{resources/grafico-va-eta.jpeg}
-        \label{grafico-va-eta}
-    \end{figure}
-    \begin{beamercolorbox}[sep=5pt,center]{block body}
+    \vspace{-0.5cm}
+    \begin{beamercolorbox}[sep=3pt,center]{block body}
         \begin{minipage}[t]{0.45\textwidth}
             \centering
             \small{$\rho=4$}
@@ -223,78 +191,232 @@
     \end{beamercolorbox}
 \end{frame}
 
-\begin{frame}{Relación entre el Ruido del Sistema y el Observable}
-    \begin{figure}[H!]
-%        \includegraphics[height=.65\textheight]{resources/grafico-va-rho.jpeg}
-        \label{grafico-va-rho}
-    \end{figure}
+
+\begin{frame}{Escenario - sin partícula líder}
     \centering
-    \begin{beamercolorbox}[sep=5pt,center]{block body}
-        \scriptsize
-        $N \in \{100,\,125,\,150,\,175,\,200,\,300,\,400,\,500,\,600,\,700,\,800,\,900,\,1000\}$
+    Relación entre el ruido del sistema y el observable
+    \includegraphics[width=0.8\textwidth]{figuras/figura2.png}
+
+    \begin{beamercolorbox}[sep=2pt,center]{block body}
+        \begin{minipage}[t]{0.2\textwidth}
+            \centering
+            \small{$\rho=4$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.3\textwidth}
+            \centering
+            \small{$T=1000$}
+        \end{minipage}
     \end{beamercolorbox}
 \end{frame}
 
-\begin{frame}{Interacción Tipo Votante}
+\begin{frame}{Escenario - partícula lider con dirección fija}
     \begin{minipage}[t]{0.60\textwidth}
         \begin{figure}[H!]
-%            \includegraphics[height=.65\textheight]{resources/animacion-votante-n-300.jpeg}
-            \caption*{\href{https://www.youtube.com/shorts/W_7f7Aq2uGs}{Link a la animación completa.}}
-            \label{animacion-votante-n-300}
+            \caption*{\url{https://youtube.com/shorts/tTuYZXHlj-A}}
         \end{figure}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.35\textwidth}
-        \begin{block}{Datos del Sistema}
+    \begin{minipage}[t]{0.30\textwidth}
+        \begin{block}{Animación}
             \begin{itemize}
-                \item $N=300$
-                \item $L=10$
-                \item $T=2000$
-                \item $\eta=0$
+                \item $\rho=4$
+                \item $T=1000$
+                \item $\eta=0.5$
             \end{itemize}
         \end{block}
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Interacción Tipo Votante}
+\begin{frame}{Escenario - partícula lider con dirección fija}
     \begin{minipage}[t]{0.60\textwidth}
         \begin{figure}[H!]
-%            \includegraphics[height=.65\textheight]{resources/animacion-votante-n-300-eta.jpeg}
-            \caption*{\href{https://www.youtube.com/shorts/x6ymonK0mbM}{Link a la animación completa.}}
-            \label{animacion-votante-n-300-eta}
+            \caption*{\href{https://youtube.com/shorts/hZ2bDILFapQ}{Link a la animación completa.}}
         \end{figure}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.35\textwidth}
-        \begin{block}{Datos del Sistema}
+        \begin{block}{Animación}
             \begin{itemize}
-                \item $N=300$
-                \item $L=10$
-                \item $T=2000$
-                \item $\eta=0.05$
+                \item $\rho=4$
+                \item $T=1000$
+                \item $\eta=5$
             \end{itemize}
         \end{block}
     \end{minipage}
 \end{frame}
 
-\begin{frame}{Interacción Tipo Votante}
+\begin{frame}{Escenario - partícula lider con dirección fija}
+    Evolución temporal del observable
     \begin{figure}[H!]
-%        \includegraphics[height=.65\textheight]{resources/grafico-votante-va.jpeg}
-        \label{grafico-votante-va}
-    \end{figure}
-\end{frame}
-
-\begin{frame}{Interacción Tipo Votante}
-    \begin{figure}[H!]
-%        \includegraphics[height=.65\textheight]{resources/grafico-votante.jpeg}
-        \label{grafico-votante}
+        \label{grafico-va-t}
     \end{figure}
     \begin{beamercolorbox}[sep=5pt,center]{block body}
-        \scriptsize
-        $N \in \{300,\,470,\,640,\,810,\,980,\,1150,\,1320,\,1490,\,1660,\,1830,\,2000\}$
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$\rho=4$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$T=1000$}
+        \end{minipage}
     \end{beamercolorbox}
+    \vspace{0.3cm}
+    \centering
+\end{frame}
+
+\begin{frame}{Escenario - partícula lider con dirección fija}
+    Relación entre el ruido del sistema y el observable
+    \begin{figure}[H!]
+        \label{grafico-va-t}
+    \end{figure}
+    \begin{beamercolorbox}[sep=5pt,center]{block body}
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$\rho=4$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$T=1000$}
+        \end{minipage}
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+    \centering
+\end{frame}
+
+\begin{frame}{Escenario - partícula lider con trayectoria circular}
+    \begin{minipage}[t]{0.60\textwidth}
+        \begin{figure}[H!]
+            \caption*{\url{https://youtube.com/shorts/tTuYZXHlj-A}}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.30\textwidth}
+        \begin{block}{Animación}
+            \begin{itemize}
+                \item $\rho=4$
+                \item $T=1000$
+                \item $\eta=0.5$
+            \end{itemize}
+        \end{block}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Escenario - partícula lider con trayectoria circular}
+    \begin{minipage}[t]{0.60\textwidth}
+        \begin{figure}[H!]
+            \caption*{\href{https://youtube.com/shorts/hZ2bDILFapQ}{Link a la animación completa.}}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.35\textwidth}
+        \begin{block}{Animación}
+            \begin{itemize}
+                \item $\rho=4$
+                \item $T=1000$
+                \item $\eta=5$
+            \end{itemize}
+        \end{block}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Escenario - partícula lider con trayectoria circular}
+    Evolución temporal del observable
+    \begin{figure}[H!]
+        \label{grafico-va-t}
+    \end{figure}
+    \begin{beamercolorbox}[sep=5pt,center]{block body}
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$\rho=4$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$T=1000$}
+        \end{minipage}
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+    \centering
+\end{frame}
+
+\begin{frame}{Escenario - partícula lider con trayectoria circular}
+    Relación entre el ruido del sistema y el observable
+    \begin{figure}[H!]
+        \label{grafico-va-t}
+    \end{figure}
+    \begin{beamercolorbox}[sep=5pt,center]{block body}
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$\rho=4$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$T=1000$}
+        \end{minipage}
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+    \centering
+\end{frame}
+
+\begin{frame}{Relación entre el ruido del sistema y el observable}
+    Comparativa
+    \begin{figure}[H!]
+        \label{grafico-va-t}
+    \end{figure}
+    \begin{beamercolorbox}[sep=5pt,center]{block body}
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$\rho=4$}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.45\textwidth}
+            \centering
+            \small{$T=1000$}
+        \end{minipage}
+    \end{beamercolorbox}
+    \vspace{0.3cm}
+    \centering
 \end{frame}
  
+
+\begin{frame}{Influencia de la densidad}
+    \begin{minipage}[t]{0.60\textwidth}
+        \begin{figure}[H!]
+            \caption*{\url{https://youtube.com/shorts/tTuYZXHlj-A}}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.30\textwidth}
+        \begin{block}{Animación}
+            \begin{itemize}
+                \item $\rho=2$
+                \item $T=1000$
+            \end{itemize}
+        \end{block}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Influencia de la densidad}
+    \begin{minipage}[t]{0.60\textwidth}
+        \begin{figure}[H!]
+            \caption*{\url{https://youtube.com/shorts/tTuYZXHlj-A}}
+        \end{figure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.30\textwidth}
+        \begin{block}{Animación}
+            \begin{itemize}
+                \item $\rho=8$
+                \item $T=1000$
+            \end{itemize}
+        \end{block}
+    \end{minipage}
+\end{frame}
+
 % Sección 5
 \section{Conclusiones}
 \begin{frame}{Conclusiones}
