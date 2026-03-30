@@ -251,7 +251,7 @@ Se variaron los siguientes parámetros:
 \begin{itemize}
 \item $\rho\in[2, 8]$ - Densidad de Partículas
     \item $T\in[300, 2000]$ - Cantidad de Pasos
-    \item $\eta\in[0.1, 5]$ - Ruido
+    \item $\eta\in[0, 5]$ - Ruido
     \item $N = \lfloor \rho \cdot L^2 \rfloor$ - Cantidad de Partículas
 \end{itemize}
 
@@ -259,7 +259,7 @@ Se variaron los siguientes parámetros:
 
 El diseño experimental contempló simulaciones independientes para las tres configuraciones de liderazgo definidas previamente en la Sección 2.2.
 
-Para caracterizar el comportamiento inicial del sistema, se realizaron simulaciones utilizando valores representativos del ruido ($\eta$=0.5, 2 y 5), manteniendo fija la densidad en $\rho=4$. En estos casos, se utilizaron los pasos temporales suficientes que permitieran analizar la evolución de la bandada y su relajación. A partir de estas simulaciones se estudió la evolución temporal de la polarización. El observable escalar se calculó promediando la polarización exclusivamente durante el régimen estacionario, cuyo criterio cuantitativo de inicio y descarte del transitorio inicial se encuentra detallado en la Sección 5.1.
+Para caracterizar el comportamiento inicial del sistema, se realizaron simulaciones utilizando valores representativos del ruido ($\eta$=0, 0.5, 1, 3 y 5), manteniendo fija la densidad en $\rho=4$. En estos casos, se utilizaron los pasos temporales suficientes que permitieran analizar la evolución de la bandada y su relajación. A partir de estas simulaciones se estudió la evolución temporal de la polarización. El observable escalar se calculó promediando la polarización exclusivamente durante el régimen estacionario, cuyo criterio cuantitativo de inicio y descarte del transitorio inicial se encuentra detallado en la Sección 5.1.
 
 Adicionalmente, se realizaron 50 ejecuciones independientes para distintos valores del ruido $\eta$, con el fin de obtener la polarización $v_a$ promedio y estimar su variabilidad estadística frente a las fluctuaciones.
 
@@ -280,11 +280,12 @@ A continuación se presentan los resultados obtenidos, agrupados por escenario.
 \caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
 \end{figure}
 
-En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder.
+En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder. Para determinar el instante a partir del cual se considera que el sistema alcanza el estado estacionario, se realizaron una serie de simulaciones recorriendo distintos valores de ruido, como se muestra en la Fig. 1. A partir de la visualización de la polarización en función del tiempo para el valor máximo de ruido, se identificó el instante en el cual cinco mediciones consecutivas de la polarización presentan variaciones relativas inferiores a una cierta tolerancia. De este modo, el valor obtenido resulta aplicable para todos los valores de ruido menores, ya que se observó que, a mayor valor de $\eta$, mayor es el tiempo requerido para alcanzar el estado estacionario.
 
 \subsubsection{Relación entre el ruido del sistema y el observable}
 
 Observamos cómo para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas. A medida que el ruido aumenta, se observa una disminución progresiva de va, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido.
+
 Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
 
 % FIGURA 2
