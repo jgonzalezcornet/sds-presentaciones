@@ -280,7 +280,7 @@ A continuación se presentan los resultados obtenidos, agrupados por escenario.
 	\caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
 \end{figure}
 
-En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder.
+En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder. 
 
 Para determinar el instante a partir del cual se considera que el sistema alcanza el estado estacionario, se aplicó un criterio empírico basado en la inspección visual de las curvas. Tomando como referencia la evolución correspondiente al máximo nivel de ruido simulado ($\eta = 5$), se identificó el punto a partir del cual el observable estabiliza sus fluctuaciones alrededor de un valor medio constante. Este mismo instante de corte se aplicó de forma fija y unificada para calcular la polarización promedio en todos los valores de ruido analizados.
 
@@ -308,7 +308,7 @@ Cada punto de las curvas corresponde al promedio de 50 ejecuciones independiente
 	\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con una dirección fija.}
 \end{figure}
 
-La Fig. 3 exhibe el comportamiento temporal de la polarización para el escenario que incorpora un líder con dirección fija.
+La Fig. 3 exhibe el comportamiento temporal de la polarización para el escenario que incorpora un líder con dirección fija. 
 
 Para la determinación del inicio del estado estacionario en este escenario, se aplicó el mismo criterio empírico detallado en la Sección 5.1.1.
 
@@ -334,7 +334,7 @@ En la Fig. 4 se presenta la polarización en función del ruido para el escenari
 	\caption{evolución de la polarización con respecto al tiempo, con una partícula líder con una trayectoria circular.}
 \end{figure}
 
-La Fig. 5 presenta la evolución temporal del observable para el sistema con una partícula líder de trayectoria circular.
+La Fig. 5 presenta la evolución temporal del observable para el sistema con una partícula líder de trayectoria circular. 
 
 De manera análoga a los escenarios anteriores, el inicio del régimen estacionario se estableció aplicando el criterio establecido en la Sección 5.1.1.
 

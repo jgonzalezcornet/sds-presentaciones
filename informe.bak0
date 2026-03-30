@@ -24,48 +24,45 @@
 \setlist[enumerate]{itemsep=0pt, topsep=6pt, parsep=0pt, partopsep=0pt}
 \captionsetup{
     justification=centering,
-    singlelinecheck=true,
-    font=small,
-    skip=4pt
+    singlelinecheck=true
 }
-\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
-\setlength{\floatsep}{8pt plus 2pt minus 2pt}
-\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 
 \begin{document}
 
 \begin{titlepage}
-	\centering
+\centering
 
-	Instituto Tecnológico de Buenos Aires\\
-	Trabajo Práctico Nº2\\
-	72.25 - Simulación de Sistemas\\[1cm]
+Instituto Tecnológico de Buenos Aires\\
+Trabajo Práctico Nº2\\
+72.25 - Simulación de Sistemas\\[1cm]
 
-	{\LARGE Autómatas Celulares}\\[1cm]
+{\LARGE Autómatas Celulares}\\[1cm]
 
-	Grupo: 5\\[0.5cm]
+Grupo: 5\\[0.5cm]
 
-	Integrantes:\\
-	Birsa Juan Pablo (64500)\\
-	jbirsa@itba.edu.ar\\
-	Gonzalez Cornet, Josefina (64550)\\
-	jgonzalezcornet@itba.edu.ar\\
-	Magri, Federico José (64508)\\
-	fmagri@itba.edu.ar\\[1cm]
+Integrantes:\\
+Birsa Juan Pablo (64500)\\
+jbirsa@itba.edu.ar\\
+Gonzalez Cornet, Josefina (64550)\\
+jgonzalezcornet@itba.edu.ar\\
+Magri, Federico José (64508)\\
+fmagri@itba.edu.ar\\[1cm]
 
-	Fecha de entrega: 30 de Marzo de 2026\\
-	1C - 2026
+Fecha de entrega: 30 de Marzo de 2026\\
+1C - 2026
 
 \end{titlepage}
 
 \tableofcontents
 \newpage
 
+\newpage
 \section{Introducción}
 
 El presente trabajo práctico tiene como objetivo el estudio y la implementación computacional del modelo de bandadas para sistemas de partículas autopropulsadas, tomando como base el modelo introducido por T. Vicsek et al. (1995). Este sistema permite investigar la emergencia de movimiento ordenado y fenómenos colectivos presentes en la naturaleza, tales como bandadas de aves o bancos de peces. En estos sistemas, a partir de interacciones locales simples, se produce una transición de fase cinética continua desde un estado desordenado hacia un movimiento cooperativo macroscópico.
 
 A diferencia del modelo estándar original, el aspecto central y novedoso de este proyecto es la incorporación de una partícula líder en el enjambre. El propósito de esta adición es analizar el impacto que tienen distintas geometrías de movimiento directriz sobre el grado de orden global del sistema al ser sometido a diferentes intensidades de ruido angular. De esta manera, el trabajo se enfoca en caracterizar la transición de fase y evaluar cómo la competencia entre las perturbaciones aleatorias y la presencia de un agente con trayectoria predefinida afecta la consolidación del movimiento colectivo.
+\newpage
 \section{Modelo}
 
 \subsection{Sistema base sin líder}
@@ -75,7 +72,7 @@ El sistema base se define como un autómata celular de tipo off-lattice, el cual
 La densidad del sistema se define como:
 
 \begin{equation}
-	\rho = \frac{N}{L^2}
+\rho = \frac{N}{L^2}
 \end{equation}
 
 por lo que, fijados $\rho$ y $L$, el número de partículas $N$ queda determinado.
@@ -85,7 +82,7 @@ La evolución temporal del sistema ocurre en pasos discretos de tiempo $\Delta t
 En cada iteración, la posición espacial del i-ésimo agente, denotada por el vector $\bm{x}_i(t)$, se actualiza a partir de su velocidad actual $\bm{v}_i(t)$ mediante:
 
 \begin{equation}
-	\bm{x}_i(t+1) = \bm{x}_i(t) + \bm{v}_i(t)
+\bm{x}_i(t+1) = \bm{x}_i(t) + \bm{v}_i(t)
 \end{equation}
 
 El módulo de la velocidad $v$ de todas las partículas es constante e igual a lo largo de toda la simulación.
@@ -93,7 +90,7 @@ El módulo de la velocidad $v$ de todas las partículas es constante e igual a l
 La dirección del movimiento de cada partícula, definida por el ángulo $\theta_i(t+1)$, se actualiza en cada paso temporal según:
 
 \begin{equation}
-	\theta_i(t+1) = \langle \theta(t) \rangle_{r_c} + \Delta \theta
+\theta_i(t+1) = \langle \theta(t) \rangle_{r_c} + \Delta \theta
 \end{equation}
 
 donde $\langle \theta(t) \rangle_{r_c}$ representa la dirección promedio de las partículas (incluyendo a la propia partícula $i$) que se encuentran dentro de un radio de interacción $r_c$.
@@ -109,8 +106,8 @@ A diferencia del modelo estándar, en los escenarios con líder se introduce una
 Para el presente estudio, se evalúan dos geometrías de movimiento predefinidas para la partícula líder:
 
 \begin{itemize}
-	\item Líder con dirección fija: La partícula posee una dirección de movimiento constante a lo largo de todo el tiempo, la cual se asigna de manera aleatoria al inicio de la simulación.
-	\item Líder con trayectoria circular: La partícula describe una trayectoria circular prefijada de radio $R=5$ alrededor de un centro arbitrario. Su velocidad angular se ajusta de manera tal que el módulo de su velocidad tangencial sea equivalente a la velocidad escalar $v$ del resto de las partículas del sistema.
+\item Líder con dirección fija: La partícula posee una dirección de movimiento constante a lo largo de todo el tiempo, la cual se asigna de manera aleatoria al inicio de la simulación.
+\item Líder con trayectoria circular: La partícula describe una trayectoria circular prefijada de radio $R=5$ alrededor de un centro arbitrario. Su velocidad angular se ajusta de manera tal que el módulo de su velocidad tangencial sea equivalente a la velocidad escalar $v$ del resto de las partículas del sistema.
 \end{itemize}
 
 \subsection{Observable de interés}
@@ -120,13 +117,14 @@ Para medir el comportamiento general del enjambre y analizar la transición de f
 Este parámetro se define como:
 
 \begin{equation}
-	v_a = \frac{1}{N v} \left| \sum_{i=1}^{N} \bm{v}_i \right|
+v_a = \frac{1}{N v} \left| \sum_{i=1}^{N} \bm{v}_i \right|
 \end{equation}
 
 donde $N$ es el número total de partículas y $v$ es el módulo constante de la velocidad individual.
 
 El observable $v_a$ toma valores cercanos a 0 cuando las direcciones de las partículas están distribuidas de manera aleatoria, lo que corresponde a un estado desordenado. En cambio, valores cercanos a 1 indican un alto grado de alineamiento, característico de un estado ordenado.
 
+\newpage
 \section{Implementación}
 
 \subsection{Arquitectura y Módulos}
@@ -134,56 +132,56 @@ El observable $v_a$ toma valores cercanos a 0 cuando las direcciones de las part
 El modelo se implementó en Java 21. Posteriormente, para la generación de animaciones y gráficos se utilizó Python 3. El proyecto se estructura de la siguiente manera:
 
 \begin{center}
-	\begin{minipage}{0.55\textwidth}
-		\begin{Verbatim}
-			tp2-code/
-			|__ Particle.java
-			|__ Leader.java
-			|__ FixedLeader.java
-			|__ CircularLeader.java
-			|__ CellIndexMethod.java
-			|__ VicsekModel.java
-			|__ Generator.java
-			|__ Main.java
-			|__ OutputWriter.java
-			tp2-visual/
-			|__ visualizer.py
-			|__ graphs.py
-		\end{Verbatim}
-	\end{minipage}
+\begin{minipage}{0.55\textwidth}
+\begin{Verbatim}
+tp2-code/
+|__ Particle.java
+|__ Leader.java
+|__ FixedLeader.java
+|__ CircularLeader.java
+|__ CellIndexMethod.java
+|__ VicsekModel.java
+|__ Generator.java
+|__ Main.java
+|__ OutputWriter.java
+tp2-visual/
+|__ visualizer.py
+|__ graphs.py
+\end{Verbatim}
+\end{minipage}
 \end{center}
 
 La arquitectura de la implementación implica las siguientes responsabilidades:
 
 \begin{itemize}
-	\item Particle.java: modela la estructura interna de una partícula.
-	\item Leader.java: clase abstracta creada por buenas prácticas de programación orientada a objetos.
-	\item FixedLeader.java: modela la estructura del líder con dirección fija.
-	\item CircularLeader.java: modela la estructura del líder con trayectoria circular.
-	\item CellIndexMethod.java: implementa el método utilizado por el VicsekModel para el cálculo de vecinos, los cuales influyen en la trayectoria de determinada partícula.
-	\item VicsekModel.java: implementación del modelo de Vicsek. Recibe por parámetro los valores necesarios para la simulación.
-	\item Generator.java: genera las partículas en ubicaciones aleatorias con ángulos aleatorios. En caso de haber líder, también lo crea.
-	\item Main.java: permite ejecutar corridas completas de la simulación. Incluye la definición de los parámetros. Calcula todos los valores necesarios adicionales para el análisis posterior.
-	\item OutputWriter.java: realiza la escritura de los archivos .txt de output requeridos.
-	\item visualizer.py: realiza las animaciones correspondientes basadas en los archivos .txt generados por OutputWriter.java.
-	\item graphs.py:
+\item Particle.java: modela la estructura interna de una partícula.
+\item Leader.java: clase abstracta creada por buenas prácticas de programación orientada a objetos.
+\item FixedLeader.java: modela la estructura del líder con dirección fija.
+\item CircularLeader.java: modela la estructura del líder con trayectoria circular.
+\item CellIndexMethod.java: implementa el método utilizado por el VicsekModel para el cálculo de vecinos, los cuales influyen en la trayectoria de determinada partícula.
+\item VicsekModel.java: implementación del modelo de Vicsek. Recibe por parámetro los valores necesarios para la simulación.
+\item Generator.java: genera las partículas en ubicaciones aleatorias con ángulos aleatorios. En caso de haber líder, también lo crea.
+\item Main.java: permite ejecutar corridas completas de la simulación. Incluye la definición de los parámetros. Calcula todos los valores necesarios adicionales para el análisis posterior.
+\item OutputWriter.java: realiza la escritura de los archivos .txt de output requeridos.
+\item visualizer.py: realiza las animaciones correspondientes basadas en los archivos .txt generados por OutputWriter.java.
+\item graphs.py:
 \end{itemize}
 
 \subsection{Algoritmo}
 
-Para la simulación computacional, la actualización de las posiciones y ángulos definidos en el modelo matemático se traduce en el procedimiento descrito en el Algoritmo 1.
+Para la simulación computacional, la actualización de las posiciones y ángulos definidos en el modelo matemático se traduce en el procedimiento descrito en el Algoritmo 1. 
 Para optimizar la búsqueda de partículas vecinas dentro del radio de interacción $r_c$, se reutilizó la implementación del método de Cell Index desarrollada en el Trabajo Práctico N°1. Este método devuelve, para cada partícula, una lista con los índices de aquellas que se encuentran en su vecindad, obteniendo así una estructura de datos eficiente donde a cada agente i se le asocia el conjunto de sus vecinos interactuantes.
 
 \begin{center}
-	\begin{tcolorbox}[width=0.9\textwidth, colback=white, colframe=black, boxrule=0.6pt]
-		\begin{enumerate}
-			\item Identificación de vecinos dentro del radio de interacción $r_c$ mediante el método de Cell Index, reutilizando la implementación desarrollada en el Trabajo Práctico N°1.
-			\item Cálculo del ángulo promedio de las partículas vecinas.
-			\item Incorporación de un término de ruido uniforme $\Delta \theta$.
-			\item Actualización de direcciones y posiciones, aplicando condiciones periódicas de contorno.
-		\end{enumerate}
-	\end{tcolorbox}
-	\small{Algoritmo 1: Paso de simulación, modelo de Vicsek}
+\begin{tcolorbox}[width=0.9\textwidth, colback=white, colframe=black, boxrule=0.6pt]
+\begin{enumerate}
+    \item Identificación de vecinos dentro del radio de interacción $r_c$ mediante el método de Cell Index, reutilizando la implementación desarrollada en el Trabajo Práctico N°1.
+    \item Cálculo del ángulo promedio de las partículas vecinas.
+    \item Incorporación de un término de ruido uniforme $\Delta \theta$.
+    \item Actualización de direcciones y posiciones, aplicando condiciones periódicas de contorno.
+\end{enumerate}
+\end{tcolorbox}
+\small{Algoritmo 1: Paso de simulación, modelo de Vicsek}
 \end{center}
 
 \subsection{Formato de Datos y Reproducibilidad}
@@ -193,16 +191,16 @@ El resultado de cada ejecución de la simulación se vuelca en un archivo output
 Este almacena la información de todos los pasos temporales simulados de la siguiente manera:
 
 \begin{center}
-	\begin{tcolorbox}[width=0.8\textwidth, colback=white, colframe=black, boxrule=0.6pt]
-		\begin{Verbatim}
-			N L rho v rc eta steps leaderType
-			step i
-			id_particula pos_x pos_y vel_x vel_y is_leader
-			step i+1
-			id_particula pos_x pos_y vel_x vel_y is_leader
-			...
-		\end{Verbatim}
-	\end{tcolorbox}
+\begin{tcolorbox}[width=0.8\textwidth, colback=white, colframe=black, boxrule=0.6pt]
+\begin{Verbatim}
+N L rho v rc eta steps leaderType
+step i
+id_particula pos_x pos_y vel_x vel_y is_leader
+step i+1
+id_particula pos_x pos_y vel_x vel_y is_leader
+...
+\end{Verbatim}
+\end{tcolorbox}
 \end{center}
 
 donde:
@@ -210,28 +208,29 @@ donde:
 Primero se indican los parámetros utilizados en la simulación:
 
 \begin{itemize}
-	\item $N$ indica el número de partículas en la simulación.
-	\item $L$ indica la longitud del lado del dominio cuadrado de simulación.
-	\item $\rho$ indica la densidad de partículas.
-	\item $v$ indica la velocidad de las partículas.
-	\item $r_c$ indica el radio de interacción entre partículas.
-	\item $\eta$ indica el nivel de ruido.
-	\item steps indica la cantidad total de pasos temporales simulados.
-	\item leaderType indica en qué caso se encuentra: sin líder, con líder de dirección fija o con líder de trayectoria circular.
+\item $N$ indica el número de partículas en la simulación.
+\item $L$ indica la longitud del lado del dominio cuadrado de simulación.
+\item $\rho$ indica la densidad de partículas.
+\item $v$ indica la velocidad de las partículas.
+\item $r_c$ indica el radio de interacción entre partículas.
+\item $\eta$ indica el nivel de ruido.
+\item steps indica la cantidad total de pasos temporales simulados.
+\item leaderType indica en qué caso se encuentra: sin líder, con líder de dirección fija o con líder de trayectoria circular.
 \end{itemize}
 
 Luego se provee el detalle step a step del modelo:
 
 \begin{itemize}
-	\item step $i$ indica el número de paso descrito a continuación.
-	\item id\_particula es un número entero que identifica a las partículas.
-	\item pos\_x indica la posición en X de la partícula correspondiente.
-	\item pos\_y indica la posición en Y de la partícula correspondiente.
-	\item vel\_x indica la componente en X de la velocidad de la partícula correspondiente.
-	\item vel\_y indica la componente en Y de la velocidad de la partícula correspondiente.
-	\item is\_leader es una opción binaria utilizada para la distinción del líder entre las partículas.
+\item step $i$ indica el número de paso descrito a continuación.
+\item id\_particula es un número entero que identifica a las partículas.
+\item pos\_x indica la posición en X de la partícula correspondiente.
+\item pos\_y indica la posición en Y de la partícula correspondiente.
+\item vel\_x indica la componente en X de la velocidad de la partícula correspondiente.
+\item vel\_y indica la componente en Y de la velocidad de la partícula correspondiente.
+\item is\_leader es una opción binaria utilizada para la distinción del líder entre las partículas.
 \end{itemize}
 
+\newpage
 \section{Simulaciones}
 
 \subsection{Parámetros fijos}
@@ -239,10 +238,10 @@ Luego se provee el detalle step a step del modelo:
 Para todas las simulaciones se utilizaron los siguientes parámetros:
 
 \begin{itemize}
-	\item $dt=1$ - Paso temporal
-	\item $r_c=1$ - Radio de Interacción
-	\item $v=0.03$ - Módulo de la Velocidad
-	\item $L=10$ - Longitud del Lado de la Celda
+    \item $dt=1$ - Paso temporal
+    \item $r_c=1$ - Radio de Interacción
+    \item $v=0.03$ - Módulo de la Velocidad
+    \item $L=10$ - Longitud del Lado de la Celda
 \end{itemize}
 
 \subsection{Parámetros variables}
@@ -250,10 +249,10 @@ Para todas las simulaciones se utilizaron los siguientes parámetros:
 Se variaron los siguientes parámetros:
 
 \begin{itemize}
-	\item $\rho\in[2, 8]$ - Densidad de Partículas
-	\item $T\in[300, 2000]$ - Cantidad de Pasos
-	\item $\eta\in[0, 5]$ - Ruido
-	\item $N = \lfloor \rho \cdot L^2 \rfloor$ - Cantidad de Partículas
+\item $\rho\in[2, 8]$ - Densidad de Partículas
+    \item $T\in[300, 2000]$ - Cantidad de Pasos
+    \item $\eta\in[0, 5]$ - Ruido
+    \item $N = \lfloor \rho \cdot L^2 \rfloor$ - Cantidad de Partículas
 \end{itemize}
 
 \subsection{Diseño experimental}
@@ -266,6 +265,7 @@ Adicionalmente, se realizaron 50 ejecuciones independientes para distintos valor
 
 Finalmente, se llevaron a cabo simulaciones adicionales para $\rho=2$ y $\rho=8$, con el objetivo de analizar el efecto específico de la densidad sobre la polarización macroscópica y la dinámica grupal del sistema.
 
+\newpage
 \section{Resultados}
 
 A continuación se presentan los resultados obtenidos, agrupados por escenario.
@@ -275,14 +275,12 @@ A continuación se presentan los resultados obtenidos, agrupados por escenario.
 
 % FIGURA 1
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura1.png}
-	\caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura1.png}
+\caption{Evolución de la polarización con respecto al tiempo, sin una partícula líder.}
 \end{figure}
 
-En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder.
-
-Para determinar el instante a partir del cual se considera que el sistema alcanza el estado estacionario, se aplicó un criterio empírico basado en la inspección visual de las curvas. Tomando como referencia la evolución correspondiente al máximo nivel de ruido simulado ($\eta = 5$), se identificó el punto a partir del cual el observable estabiliza sus fluctuaciones alrededor de un valor medio constante. Este mismo instante de corte se aplicó de forma fija y unificada para calcular la polarización promedio en todos los valores de ruido analizados.
+En la Fig. 1 se presenta la evolución de la polarización en función del tiempo para el escenario base sin partícula líder. Para determinar el instante a partir del cual se considera que el sistema alcanza el estado estacionario, se realizaron una serie de simulaciones recorriendo distintos valores de ruido, como se muestra en la Fig. 1. A partir de la visualización de la polarización en función del tiempo para el valor máximo de ruido, se identificó el instante en el cual cinco mediciones consecutivas de la polarización presentan variaciones relativas inferiores a una cierta tolerancia. De este modo, el valor obtenido resulta aplicable para todos los valores de ruido menores, ya que se observó que, a mayor valor de $\eta$, mayor es el tiempo requerido para alcanzar el estado estacionario.
 
 \subsubsection{Relación entre el ruido del sistema y el observable}
 
@@ -292,9 +290,9 @@ Cada punto de las curvas corresponde al promedio de 50 ejecuciones independiente
 
 % FIGURA 2
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura2.png}
-	\caption{Polarización en función del ruido para el escenario base sin partícula líder}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura2.png}
+\caption{Polarización en función del ruido para el escenario base sin partícula líder}
 \end{figure}
 
 \subsection{Escenarios con partícula líder de dirección fija}
@@ -303,22 +301,20 @@ Cada punto de las curvas corresponde al promedio de 50 ejecuciones independiente
 
 % FIGURA 3
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura3.png}
-	\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con una dirección fija.}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura3.png}
+\caption{Evolución de la polarización con respecto al tiempo, con una partícula líder con una dirección fija.}
 \end{figure}
 
-La Fig. 3 exhibe el comportamiento temporal de la polarización para el escenario que incorpora un líder con dirección fija.
-
-Para la determinación del inicio del estado estacionario en este escenario, se aplicó el mismo criterio empírico detallado en la Sección 5.1.1.
+La Fig. 3 exhibe el comportamiento temporal para el escenario que incorpora un líder con dirección fija.
 
 \subsubsection{Relación entre el ruido del sistema y el observable}
 
 % FIGURA 4
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura4.png}
-	\caption{Representa la polarización en función del ruido para un sistema con una partícula líder con dirección fija.}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura4.png}
+\caption{Representa la polarización en función del ruido para un sistema con una partícula líder con dirección fija.}
 \end{figure}
 
 En la Fig. 4 se presenta la polarización en función del ruido para el escenario con líder de dirección fija. En todos los casos, para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas. A medida que el ruido aumenta, se observa una disminución progresiva de $v_a$, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido. Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
@@ -329,22 +325,18 @@ En la Fig. 4 se presenta la polarización en función del ruido para el escenari
 
 % FIGURA 5
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura5.png}
-	\caption{evolución de la polarización con respecto al tiempo, con una partícula líder con una trayectoria circular.}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura5.png}
+\caption{evolución de la polarización con respecto al tiempo, con una partícula líder con una trayectoria circular.}
 \end{figure}
-
-La Fig. 5 presenta la evolución temporal del observable para el sistema con una partícula líder de trayectoria circular.
-
-De manera análoga a los escenarios anteriores, el inicio del régimen estacionario se estableció aplicando el criterio establecido en la Sección 5.1.1.
 
 \subsubsection{Relación entre el ruido del sistema y el observable}
 
 % FIGURA 6
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura6.png}
-	\caption{Polarización en función del ruido para un sistema con líder circular.}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura6.png}
+\caption{Polarización en función del ruido para un sistema con líder circular.}
 \end{figure}
 
 En la Fig. 6 se presenta la polarización en función del ruido para el escenario con líder de trayectoria circular. Al igual que en los casos anteriores, para valores bajos de $\eta$ la polarización se mantiene cercana a 1, mientras que a medida que el ruido aumenta se observa una disminución progresiva de $v_a$, evidenciando la transición desde un estado ordenado hacia uno desordenado. Cada punto corresponde al promedio de 50 ejecuciones independientes y las barras de error representan el desvío entre dichas ejecuciones.
@@ -373,9 +365,9 @@ No obstante, las diferencias observadas se encuentran dentro del orden de magnit
 
 % FIGURA 7
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura7.png}
-	\caption{Polarización en función del ruido para los tres sistemas.}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura7.png}
+\caption{Polarización en función del ruido para los tres sistemas.}
 \end{figure}
 
 \FloatBarrier
@@ -388,44 +380,45 @@ A nivel macroscópico, los resultados obtenidos muestran un comportamiento cuali
 
 Para determinar el inicio del régimen estacionario en estos nuevos escenarios, se evaluaron las evoluciones temporales de forma independiente. A partir de un criterio empírico basado en la inspección visual de las curvas de polarización, se determinó que las fluctuaciones del sistema se estabilizan superado el transitorio inicial. Por este motivo, se estableció de forma fija el comienzo del estado estacionario a los 200 pasos temporales para todos los casos correspondientes a este análisis.
 
-En la Fig. 8 y la Fig. 9 se observa el comportamiento de la polarización en el escenario sin partícula líder para el sistema menos denso ($\rho=2$) sometido a un ruido bajo ($\eta=0,1$) y a un ruido elevado ($\eta=5$), respectivamente. En dichos gráficos, la línea vertical intermitente marca el instante empírico de estabilización definido.
+En la Fig. 8 y la Fig. 9 se observa el comportamiento de la polarización en el escenario sin partícula líder para el sistema menos denso ($\rho=2$) sometido a un ruido bajo ($\eta=0,1$) y a un ruido elevado ($\eta=3$), respectivamente. En dichos gráficos, la línea vertical intermitente marca el instante empírico de estabilización definido.
 
 % FIGURA 8
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura8.png}
-	\caption{Polarización vs tiempo para $\rho=2$, $\eta=0,1$ (sin líder).}
-	\label{fig:densidad2_01}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura8.png}
+\caption{Polarización vs tiempo para $\rho=2$, $\eta=0,1$ (sin líder).}
+\label{fig:densidad2_01}
 \end{figure}
 
 % FIGURA 9
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura9.png}
-	\caption{Polarización vs tiempo para $\rho=2$, $\eta=5$ (sin líder).}
-	\label{fig:densidad2_3}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura9.png}
+\caption{Polarización vs tiempo para $\rho=2$, $\eta=3$ (sin líder).}
+\label{fig:densidad2_3}
 \end{figure}
 
-Por otro lado, la Fig. 10 y la Fig. 11 exhiben la evolución temporal del observable para este mismo caso sin líder al incrementar la densidad del sistema ($\rho=8$) para los mismos niveles de ruido ($\eta=0,1$ y $\eta=5$).
+Por otro lado, la Fig. 10 y la Fig. 11 exhiben la evolución temporal del observable para este mismo caso sin líder al incrementar la densidad del sistema ($\rho=8$) para los mismos niveles de ruido ($\eta=0,1$ y $\eta=3$). 
 
 % FIGURA 10
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura10.png}
-	\caption{Polarización vs tiempo para $\rho=8$, $\eta=0,1$ (sin líder).}
-	\label{fig:densidad8_01}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura10.png}
+\caption{Polarización vs tiempo para $\rho=8$, $\eta=0,1$ (sin líder).}
+\label{fig:densidad8_01}
 \end{figure}
 
 % FIGURA 11
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/figura11.png}
-	\caption{Polarización vs tiempo para $\rho=8$, $\eta=5$ (sin líder).}
-	\label{fig:densidad8_3}
+\centering
+\includegraphics[width=0.8\textwidth]{figuras/figura11.png}
+\caption{Polarización vs tiempo para $\rho=8$, $\eta=3$ (sin líder).}
+\label{fig:densidad8_3}
 \end{figure}
 
 \FloatBarrier
 
+\newpage
 \section{Conclusiones}
 
 En el presente trabajo se implementó y analizó el modelo de Vicsek para sistemas de partículas autopropulsadas, incorporando una partícula líder con distintas geometrías de movimiento. A partir de las simulaciones realizadas, se estudió el comportamiento del sistema en función del parámetro de ruido $\eta$ y de la densidad $\rho$, evaluando su impacto sobre el grado de orden colectivo medido mediante la polarización.
@@ -434,11 +427,13 @@ Los resultados obtenidos evidencian que el ruido constituye el principal factor 
 
 En cuanto a la influencia de la partícula líder, se encontró que su efecto sobre la polarización global es prácticamente nulo en comparación con el impacto dominante del ruido. Al contrastar los escenarios con líder de dirección fija y líder de trayectoria circular, no se observan diferencias en el grado de orden; las curvas de polarización resultan virtualmente idénticas a la del sistema base y cualquier mínima variación se encuentra dentro del orden de magnitud de las barras de error y las fluctuaciones naturales del sistema.
 
-Por otro lado, el análisis de la densidad revela que su efecto es fundamental para la consolidación del movimiento cooperativo. Una mayor densidad $\rho$ favorece el orden colectivo debido a que incrementa el número promedio de partículas presentes dentro del radio de interacción $r_c$ de cada agente. Al haber una mayor cantidad de vecinos participando en el cálculo local de la dirección media, el sistema logra promediar y atenuar de manera mucho más efectiva las perturbaciones individuales introducidas por el ruido $\eta$. Como resultado, el consenso local se vuelve más robusto, permitiendo que el enjambre mantenga una polarización $v_a$ más elevada y estable para resistir los efectos del desorden.
+Por otro lado, el análisis de la densidad revela que su efecto es fundamental para la consolidación del movimiento cooperativo. En sistemas de baja densidad, la gran distancia media entre partículas dificulta la propagación de la información, resultando en un enjambre altamente disperso e incapaz de mantener el consenso. Esto se hace evidente en el escenario sin líder al observar la Fig. 9, donde para un ruido elevado ($\eta$=3) y una baja densidad ($\rho$=2), la polarización sufre fluctuaciones severas y caóticas. Por el contrario, tal como refleja la Fig. 11 para el mismo escenario bajo el mismo nivel de ruido pero con una densidad elevada ($\rho$=8), el enjambre logra atenuar estas perturbaciones y estabilizarse notablemente. En este sentido, una mayor densidad $\rho$ favorece el orden colectivo: al aumentar las interacciones locales, el sistema logra mantener una polarización $v_a$ más elevada y estable, mitigando el efecto ante niveles altos de ruido $\eta$.
 
 En conjunto, los resultados muestran que el comportamiento macroscópico del sistema surge de la competencia directa entre el ruido y las interacciones locales promovidas por la densidad, siendo el ruido el principal determinante del grado de desorden, mientras que la presencia y geometría de una partícula líder resulta tener un impacto marginal sobre el orden colectivo global.
+
+\newpage
 \section*{Referencias}
 
- [1] Vicsek, T., et al. ``Novel type of phase transition in a system of self-driven particles'', Physical Review Letters, 1995.
+[1] Vicsek, T., et al. ``Novel type of phase transition in a system of self-driven particles'', Physical Review Letters, 1995.
 
 \end{document}
