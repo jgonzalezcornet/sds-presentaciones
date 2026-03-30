@@ -18,7 +18,7 @@
 \usepackage{placeins}
 
 \geometry{margin=2.5cm}
-\setstretch{1.2}
+\onehalfspacing
 
 \setlist[itemize]{itemsep=0pt, topsep=6pt, parsep=0pt, partopsep=0pt}
 \setlist[enumerate]{itemsep=0pt, topsep=6pt, parsep=0pt, partopsep=0pt}
@@ -286,17 +286,16 @@ Para determinar el instante a partir del cual se considera que el sistema alcanz
 
 \subsubsection{Relación entre el ruido del sistema y el observable}
 
+Observamos cómo para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas. A medida que el ruido aumenta, se observa una disminución progresiva de va, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido.
+
+Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
+
 % FIGURA 2
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figuras/figura2.png}
 	\caption{Polarización en función del ruido para el escenario base sin partícula líder}
 \end{figure}
-
-Observamos cómo para valores bajos de $\eta$, la polarización se mantiene cercana a 1, indicando un alto grado de alineamiento colectivo entre las partículas. A medida que el ruido aumenta, se observa una disminución progresiva de va, lo que refleja la pérdida de coherencia en el movimiento. Esta evolución evidencia una transición continua desde un estado ordenado hacia uno desordenado, en concordancia con el comportamiento esperado del modelo de Vicsek. Para valores elevados de $\eta$, la polarización tiende a cero, caracterizando un régimen dominado por el ruido.
-
-Cada punto de las curvas corresponde al promedio de 50 ejecuciones independientes, mientras que las barras de error representan el desvío entre dichas ejecuciones, proporcionando una medida de la dispersión del observable.
-
 
 \subsection{Escenarios con partícula líder de dirección fija}
 
