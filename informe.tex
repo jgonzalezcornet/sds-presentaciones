@@ -368,7 +368,7 @@ No obstante, las diferencias observadas se encuentran dentro del orden de magnit
 
 \subsection{Influencia de la densidad}
 
-Con el objetivo de analizar el efecto de la densidad sobre el comportamiento del sistema, se realizaron simulaciones adicionales para $\rho=2$ y $\rho=8$, considerando distintos valores del parámetro de ruido. Para este análisis detallado, se tomó como caso de estudio el escenario del sistema base sin líder.
+Con el objetivo de analizar el efecto de la densidad sobre el comportamiento del sistema, se realizaron simulaciones adicionales para $\rho=2$ y $\rho=8$, considerando distintos valores del parámetro de ruido y las tres configuraciones de liderazgo.
 
 A nivel macroscópico, los resultados obtenidos muestran un comportamiento cualitativamente similar al caso base $\rho=4$, observándose en todos los casos una transición desde un estado ordenado hacia uno desordenado a medida que aumenta el ruido. No obstante, se identifican diferencias en la dinámica del sistema asociadas a la densidad.
 
@@ -407,24 +407,6 @@ Por otro lado, la Fig. \ref{fig:densidad8_01} y la Fig. \ref{fig:densidad8_3} ex
 \caption{Polarización vs tiempo para $\rho=8$, $\eta=3$.}
 \label{fig:densidad8_3}
 \end{figure}
-
-Es notable cómo, ante el mismo nivel de ruido elevado ($\eta=3$), el sistema más denso presenta un umbral de fluctuación menor (0.02 frente a 0.03). Esto confirma que una mayor cantidad de partículas por unidad de área contribuye a mitigar la dispersión del observable $v_a$.
-
-Para ilustrar gráficamente la marcada dispersión y la dificultad de alcanzar un orden global en sistemas poco densos con perturbaciones elevadas, la Fig. \ref{fig:animacion_densidad} presenta una captura de la configuración espacial correspondiente al escenario con $\rho=2$ y $\eta=3$.
-
-% FIGURA 12
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{figuras/figura12.png}
-\caption{Configuración espacial para $\rho=2$, $\eta=3$.}
-\label{fig:animacion_densidad}
-\end{figure}
-
-En esta imagen se evidencia cómo la reducción en la cantidad total de partículas incrementa significativamente la distancia media entre ellas, lo que disminuye la probabilidad de encontrar vecinos dentro del radio de interacción $r_c$. Esto provoca que el sistema se encuentre muy disperso, formando únicamente grupos polarizados pequeños e inestables que son rápidamente desarmados por el ruido, impidiendo que el enjambre consolide una dirección de movimiento unificada.
-
-Por el contrario, para densidades elevadas, la interacción colectiva entre partículas adquiere mayor relevancia. En este caso, el aumento de las interacciones locales permite que el sistema logre mantener una polarización $v_a$ más elevada y estable, mitigando eficazmente el efecto desestabilizador ante niveles altos de ruido $\eta$.
-\clearpage
-\section{Conclusiones}
 
 En el presente trabajo se implementó y analizó el modelo de Vicsek para sistemas de partículas autopropulsadas, incorporando una partícula líder con distintas geometrías de movimiento. A partir de las simulaciones realizadas, se estudió el comportamiento del sistema en función del parámetro de ruido $\eta$ y de la densidad $\rho$, evaluando su impacto sobre el grado de orden colectivo medido mediante la polarización.
 
